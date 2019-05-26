@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">CollPoll</string>
+    <string name="dialog_message">Welcome to Alert Dialog</string>
+    <string name="dialog_title">Javatpoint Alert Dialog</string>
+    <string name="enter_city_name_text">Enter City name</string>
+    <string name="there_is_no_list">No cities are there Please add some</string>
+</resources>
