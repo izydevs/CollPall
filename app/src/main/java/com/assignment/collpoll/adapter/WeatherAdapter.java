@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.assignment.collpoll.R;
 import com.assignment.collpoll.Utils.Utils;
 import com.assignment.collpoll.WeatherDatabase;
+import com.assignment.collpoll.activity.MainActivity;
 import com.assignment.collpoll.activity.WeatherDetailsActivity;
 import com.assignment.collpoll.model.WeatherDetails;
 
@@ -102,6 +103,9 @@ public class WeatherAdapter extends RecyclerView.Adapter<WeatherAdapter.MyViewHo
                         deleteWeatherDataFromRoom(myList.get(i));
                         myList.remove(i);
                         notifyDataSetChanged();
+                        if (myList.size()==0){
+                            ((MainActivity)context).checkListSize();
+                        }
                     }
                 })
                 .setNegativeButton("No", new DialogInterface.OnClickListener() {

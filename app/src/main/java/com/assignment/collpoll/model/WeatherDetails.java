@@ -3,14 +3,16 @@ package com.assignment.collpoll.model;
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 import java.io.Serializable;
 
 @Entity(tableName = "weatherdetails")
 public class WeatherDetails implements Serializable {
-    @PrimaryKey(autoGenerate =true)
-    private int id;
 
+    @NonNull
+    @PrimaryKey
     @ColumnInfo(name = "city")
     private String cityName;
 
@@ -48,14 +50,6 @@ public class WeatherDetails implements Serializable {
         this.humidity = humidity;
         this.pressure = pressure;
         this.windSpeed = windSpeed;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getCityName() {

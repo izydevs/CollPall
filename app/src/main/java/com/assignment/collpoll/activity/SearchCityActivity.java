@@ -62,10 +62,14 @@ public class SearchCityActivity extends AppCompatActivity implements View.OnClic
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.search_iv:
-                callApi();
+                if (Utils.isNetworkConnected(getApplicationContext())) {
+                    callApi();
+                }else {
+                    Toast.makeText(getApplicationContext(), "Check Internet connection", Toast.LENGTH_LONG).show();
+                }
                 break;
             case R.id.save_btn:
-                daveWeatherData();
+                saveWeatherData();
                 break;
         }
     }
@@ -82,7 +86,7 @@ public class SearchCityActivity extends AppCompatActivity implements View.OnClic
         }
     }
 
-    private void daveWeatherData() {
+    private void saveWeatherData() {
         if (weatherDetails != null) {
             Thread thread = new Thread() {
                 @Override
@@ -125,10 +129,11 @@ public class SearchCityActivity extends AppCompatActivity implements View.OnClic
 
     @Override
     public void onResponseSuccess(WeatherMap weatherMap) {
+        Log.d("asdf", "onResponseSuccess....");
         saveBtn.setEnabled(true);
         weatherDetails = new WeatherDetails(weatherMap.getName(), weatherMap.getWeather().get(0).getMain(), weatherMap.getMain().getTemp(),
                 weatherMap.getMain().getTemp_min(), weatherMap.getMain().getTemp_max(), weatherMap.getDt(), weatherMap.getMain().getHumidity(),
-                weatherMap.getMain().getPressure(), weatherMap.getWind().getSpeed());
+                (int)weatherMap.getMain().getPressure(), weatherMap.getWind().getSpeed());
 
         view.setVisibility(View.VISIBLE);
         updateUI(weatherDetails);
@@ -145,6 +150,8 @@ public class SearchCityActivity extends AppCompatActivity implements View.OnClic
 
     @Override
     public void onResponseFailure(Throwable throwable) {
+        Toast.makeText(getApplicationContext(), "onResponseFailure", Toast.LENGTH_LONG).show();
+
 
     }
 

@@ -18,6 +18,7 @@ public class GetResultDataService implements MainInterface.GetWeatherIntractor {
         call.enqueue(new Callback<WeatherMap>() {
             @Override
             public void onResponse(Call<WeatherMap> call, Response<WeatherMap> response) {
+                Log.d("asdf", "onResponse...."+response.body());
                 if (response.body()!=null && response.body().getCod()==200) {
                     onFinishedListener.onFinished(response.body(), true);
                 }else {
@@ -28,6 +29,8 @@ public class GetResultDataService implements MainInterface.GetWeatherIntractor {
             @Override
             public void onFailure(Call<WeatherMap> call, Throwable t) {
                 onFinishedListener.onFailure(t);
+                Log.d("asdf", "onResponse...."+t);
+
             }
         });
     }

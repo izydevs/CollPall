@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import com.assignment.collpoll.Interface.CheckList;
 import com.assignment.collpoll.R;
 import com.assignment.collpoll.WeatherDatabase;
 import com.assignment.collpoll.adapter.WeatherAdapter;
@@ -20,7 +21,7 @@ import com.assignment.collpoll.model.WeatherDetails;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity  {
+public class MainActivity extends AppCompatActivity  implements CheckList {
 
     private RecyclerView recyclerView;
     private WeatherAdapter mAdapter;
@@ -88,5 +89,10 @@ public class MainActivity extends AppCompatActivity  {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void checkListSize() {
+        tv.setVisibility(View.VISIBLE);
     }
 }

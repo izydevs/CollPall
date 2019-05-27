@@ -1,5 +1,8 @@
 package com.assignment.collpoll.Utils;
 
+import android.content.Context;
+import android.net.ConnectivityManager;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -19,5 +22,10 @@ public class Utils {
 
     public static String changekelvinToCelcius(double temp) {
         return ((int) (temp - 273.15)) + "°C";
+    }
+
+    public static boolean isNetworkConnected(Context context) {
+        ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        return cm.getActiveNetworkInfo() != null;
     }
 }

@@ -185,10 +185,12 @@ public class WeatherMap implements Serializable {
 
     public class Main {
         public double temp;
-        public int pressure;
+        public double pressure;
         public int humidity;
         public double temp_min;
         public double temp_max;
+        public double sea_level;
+        public double grnd_level;
 
         public double getTemp() {
             return temp;
@@ -198,11 +200,11 @@ public class WeatherMap implements Serializable {
             this.temp = temp;
         }
 
-        public int getPressure() {
+        public double getPressure() {
             return pressure;
         }
 
-        public void setPressure(int pressure) {
+        public void setPressure(double pressure) {
             this.pressure = pressure;
         }
 
@@ -228,6 +230,22 @@ public class WeatherMap implements Serializable {
 
         public void setTemp_max(double temp_max) {
             this.temp_max = temp_max;
+        }
+
+        public double getSea_level() {
+            return sea_level;
+        }
+
+        public void setSea_level(double sea_level) {
+            this.sea_level = sea_level;
+        }
+
+        public double getGrnd_level() {
+            return grnd_level;
+        }
+
+        public void setGrnd_level(double grnd_level) {
+            this.grnd_level = grnd_level;
         }
     }
 
